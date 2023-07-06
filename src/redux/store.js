@@ -1,6 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
-import moviesReducer from '../screens/movies/reducer';
-import logger from 'redux-logger'
+import { configureStore } from "@reduxjs/toolkit";
+import moviesReducer from "../screens/movies/reducer";
+import logger from "redux-logger";
 
 const store = configureStore({
   reducer: {

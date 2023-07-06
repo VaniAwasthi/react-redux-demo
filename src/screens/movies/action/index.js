@@ -1,8 +1,8 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchMovies } from "../../../redux/api";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { fetchData } from "../../../redux/api";
 
-const fetchMoviesData = createAsyncThunk('movies/fetchMoviesData', async () => {
-  const response = await fetchMovies();
+const fetchMoviesData = createAsyncThunk("movies/fetchMoviesData", async () => {
+  const response = await fetchData("/movies.json", "GET", {});
   return response.movies;
 });
 
