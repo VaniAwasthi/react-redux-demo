@@ -1,10 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchMoviesData } from '../action';
-
-
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchMoviesData, fetchMoviesDetail } from "../action";
 
 const moviesSlice = createSlice({
-  name: 'movies',
+  name: "movies",
   initialState: {
     data: [],
     loading: false,
@@ -26,7 +24,21 @@ const moviesSlice = createSlice({
         state.error = action.error.message;
       });
   },
+  movieDetailReducer: (builder) => {
+    builder
+      .addCase(fetchMoviesDetail.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchMoviesDetail.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      })
+      .addCase(fetchMoviesDetail.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+  },
 });
-
 
 export default moviesSlice.reducer;
